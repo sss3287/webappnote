@@ -1,1 +1,12 @@
+input validation
+int overflow
+harcoded creds - pwd, api key etc.
+insecure hashing / encryption algorithm
+null pointer check
+buffer overflow
+usage of outdated fuctions or insecure ones
+len verification
+dubfree
+check params
+initialized vectors or vars
 
