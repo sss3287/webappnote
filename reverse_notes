@@ -1,0 +1,20 @@
+# Reverse Engineering Notes
+# BE A WHITEHAT FIRST.  ---- TO ME 
+```bash
+LE - usual, BEndian- opposite
+SHL - multiply by 2^n (Leftmost bit lost)
+SHR - divide by 2^n (Rightmost bit lost)
+-ve digit = write in binary and then take ones complement and then add 1 
+not makes it opposite - 0 becomes 1 and 1 becomes 0
+xor- clears the register
+
+gdb --nx [filename]
+info functions
+disass main
+breakpoints = break *main+offset
+set disassembly-flavor intel
+run program and also check first
+ltrace, strace
+
+www.dogbolt.org [check first if okay]
+hexdump [file]
