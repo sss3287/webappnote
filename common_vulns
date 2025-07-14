@@ -1,12 +1,13 @@
 input validation
 int overflow
+information leakage
 harcoded creds - pwd, api key etc.
 insecure hashing / encryption algorithm
-null pointer check
+null pointer check || null check
 buffer overflow
 usage of outdated fuctions or insecure ones
 len verification
-dubfree
+2free
 check params
 initialized vectors or vars
 directory traversal
