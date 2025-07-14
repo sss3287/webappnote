@@ -4,6 +4,7 @@
 LE - usual, BEndian- opposite
 SHL - multiply by 2^n (Leftmost bit lost)
 SHR - divide by 2^n (Rightmost bit lost)
+ROR & ROL doesnt lose bits... goes left or right and circles around
 -ve digit = write in binary and then take ones complement and then add 1 
 not makes it opposite - 0 becomes 1 and 1 becomes 0
 xor- clears the register
