@@ -17,6 +17,13 @@ file [name]
 hexdump [file]
 run program and also check first
 ltrace, strace
+
+LOOK FOR VULN FUCTIONS AS WELL AS FLAGS PWD ETC.
+
+strings binary_name
+strings -a binary_name        # All strings
+
+GHIDRA/IDA/ preferably cutter
 gdb --nx [filename]
 info functions
 disass main
@@ -25,10 +32,6 @@ set disassembly-flavor intel
 run
 x/s $esi etc.
 
-LOOK FOR VULN FUCTIONS AS WELL AS FLAGS PWD ETC.
-
-strings binary_name
-strings -a binary_name        # All strings
 
 
 www.dogbolt.org [check first if okay]
