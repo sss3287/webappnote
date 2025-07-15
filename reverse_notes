@@ -1,5 +1,8 @@
 # Reverse Engineering Notes
 # BE A WHITEHAT FIRST.  ---- TO ME 
+
+www.dogbolt.org [check first if okay]
+
 ```bash
 LE - usual, BEndian- opposite
 SHL - multiply by 2^n (Leftmost bit lost)
