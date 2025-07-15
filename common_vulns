@@ -7,7 +7,8 @@ null pointer check || null check
 buffer overflow
 usage of outdated fuctions or insecure ones
 len verification
-2free
+2fre
+dependencies or libraries being used by them
 check params
 initialized vectors or vars
 directory traversal
